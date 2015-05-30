@@ -1,10 +1,10 @@
 angular.module('letsApp.controllers', [])
 
-.controller('ActiveThreadCtrl', function($scope, $http){
+.controller('ActiveDecisionCtrl', function($scope, $http){
   $http.get('http://jsonplaceholder.typicode.com/users').then(function(resp){
     console.log(resp);
     // debugger;
-    $scope.threadUsers = resp.data;
+    $scope.decisionUsers = resp.data;
   }, function(err){
     console.error('ERR', err);
   })

@@ -18,12 +18,17 @@ angular.module('letsApp', ['ionic', 'letsApp.controllers'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider){
+.config(function($stateProvider){
   $stateProvider
   .state('app', {
-    url: "/app",
+    url: "/",
+    abstract: true,
     templateUrl: "index.html",
-    controller: "ActiveThreadCntrl"
+  })
+
+  .state('ActiveDecision', {
+    url: "/decision",
+    templateUrl: "templates/active_decision.html",
+    controller: "ActiveDecisionCtrl"
   });
-  $urlRouterProvider.otherwise('/app')
 })
