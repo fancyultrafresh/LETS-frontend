@@ -19,7 +19,7 @@ var app = angular.module('letsApp',
   });
 })
 
-.config(function($stateProvider){
+.config(function($stateProvider, $urlRouterProvider){
   $stateProvider
   .state('app', {
     url: "/",
@@ -32,4 +32,5 @@ var app = angular.module('letsApp',
     templateUrl: "templates/active_decision.html",
     controller: "ActiveDecisionCtrl"
   });
+  $urlRouterProvider.otherwise('/decision')
 })
