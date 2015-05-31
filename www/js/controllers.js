@@ -1,6 +1,7 @@
 
 app.controller('ActiveDecisionCtrl', ['$scope', 'Decision', '$ionicModal', function($scope, Decision, $ionicModal){
 
+    // hard coded variables will be replaced with associated json data from api
     $scope.decisionUsers = Decision.query();
     $scope.decisionName = "Pizza Tonight!"
     $scope.currentProposal = "Dominoes"
@@ -20,9 +21,11 @@ app.controller('ActiveDecisionCtrl', ['$scope', 'Decision', '$ionicModal', funct
     });
 
     $scope.createProposal = function(proposal){
-      $scope.decisionName.replace("Pizza", proposal.proposed_idea);
+
+      $scope.decisionName = proposal.proposed_idea;
       $scope.proposalModal.hide();
-      proposal.proposed_idea = "";
+      // debugger;
+      // proposal.proposed_idea = "";
     };
 
     $scope.newProposal = function(){
@@ -33,21 +36,55 @@ app.controller('ActiveDecisionCtrl', ['$scope', 'Decision', '$ionicModal', funct
       $scope.proposalModal.hide();
     }
 }])
-.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state){
-  $scope.data = {};
+.controller('LoginCtrl', function($scope, $ionicPopup, $state, $rootScope, $ionicLoading, User){
+  $scope.userData = {
+    email: null,
+    password: null
+  };
+
+  $scope.error = {};
 
   $scope.login = function(){
-    console.log("Login user: " + $scope.data.username + " - Password:" + $scope.data.password)
 
-    LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data){
+    console.log("Login user: " + $scope.userData.email + " - Password:" + $scope.userData.password)
+
+    $scope.loading = $ionicLoading.show({
+      content: "Logging in",
+      animation: 'fade-in',
+      showBackdrop: true,
+      maxWidth: 200,
+      showDelay: 0
+    });
+
+
+    var user = $scope.userData;
+
+    User.login($scope.userData).then(function(user){
+      $ionicLoading.hide();
+
+      $rootScope.isLoggedIn = true;
+
+
       $state.go('ActiveDecision');
-    }).error(function(data){
-      var alertPopup = $ionicPopup.alert({
-        title: "Login failed!",
-        template: "Please check your email and password"
-      })
-    })
-  }
+
+    }, function(err){
+
+      $ionicLoading.hide();
+
+      if (err.status === 400) {
+        var alertPopup = $ionicPopup.alert({
+          title: "Login failed!",
+          template: "Please check your email and password"
+          });
+
+        $scope.error = err.data.error;
+      } else {
+        $scope.error = {
+          'message': 'There was an error on our end. Please try again later. Sorry!'
+        };
+      }
+    });
+  };
 });
 // .controller('modalCtrl', ['$scope', function($scope,  $ionicModal){
 
