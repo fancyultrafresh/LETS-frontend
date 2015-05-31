@@ -3,6 +3,7 @@ app.controller('ActiveDecisionCtrl', ['$scope', 'Decision', '$ionicModal', funct
 
     $scope.decisionUsers = Decision.query();
     $scope.decisionName = "Pizza Tonight!"
+    $scope.currentProposal = "Dominoes"
     $scope.decisionData = {};
     // $scope.newDecision = function() {
     //   var query = new Query($scope.queryData);
