@@ -1,0 +1,22 @@
+<script id="new_proposal.html" type="text/ng-template">
+<div class="modal">
+  <ion-header-bar class="bar-secondary">
+    <h1 class="title">Propose New Idea</h1>
+    <button class="button button-positive" ng-click="cancelNewProposal()">Cancel</button>
+  </ion-header-bar>
+
+
+  <ion content>
+    <form ng-submit="newProposal(proposal)">
+      <div>
+        <label class="item item-input">
+          <input type="text" placeholder="Where do you want to eat?" ng-model="proposal.proposed_idea">
+        </label>
+      </div>
+      <div>
+        <button type="submit" class="button button-block button-balanced">Submit</button>
+      </div>
+    </form>
+  </ion-content>
+</div>
+</script>

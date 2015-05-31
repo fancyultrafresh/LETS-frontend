@@ -14,21 +14,48 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic/js/angular/angular-resource.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
-  </head>
-  <body ng-app="starter">
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
 
-    <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
-      </ion-header-bar>
-      <ion-content>
-      </ion-content>
-    </ion-pane>
+  </head>
+  <body ng-app="letsApp" ng-controller="ActiveDecisionCtrl">
+<!--   <ion-header-bar class="bar-stable">
+     <h1 class="title">LET&apos;S</h1>
+     <ion-nav-buttons side="right"><a ng-href="templates/active_decision.html"><button class="button button-icon ion-chevron-right button-calm"></button></a></ion-nav-buttons>
+  </ion-header-bar> -->
+    <ion-nav-bar class="bar assertive">
+      <ion-nav-back-button></ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view></ion-nav-view>
+    <script id="new_proposal.html" type="text/ng-template">
+      <div class="modal">
+        <ion-header-bar class="bar-secondary">
+          <h1 class="title">Propose New Idea</h1>
+          <button class="button button-positive" ng-click="cancelNewProposal()">Cancel</button>
+        </ion-header-bar>
+
+
+        <ion-content>
+          <form ng-submit="newProposal(proposal)">
+            <div class="list">
+              <label class="item item-input">
+                <input type="text" placeholder="Where do you want to eat?" ng-model="proposal.proposed_idea">
+              </label>
+            </div>
+            <div>
+              <button type="submit" class="button button-block button-balanced">Submit</button>
+            </div>
+          </form>
+        </ion-content>
+
+      </div>
+    </script>
   </body>
 </html>

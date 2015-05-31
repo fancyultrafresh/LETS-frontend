@@ -1,0 +1,18 @@
+<ion-view view-title="{{decisionName}}">
+  <ion-content ng-controller="ActiveDecisionCtrl">
+    <ion-list show-delete="false" can-swipe="true">
+      <ion-item ng-repeat="user in decisionUsers">
+      {{user.name}}
+      <ion-option-button ng-show="user.name == 'Patricia Lebsack'" on-swipe-left="onSwipeLeft()" class="button">Opt Out</ion-option-button>
+
+      <span ng-show="user.name == 'Ervin Howell'" class="span icon-right ion-star"></span>
+
+       <button ng-show="user.name == 'Patricia Lebsack'" class="button button-balanced" ng-click="newVote(true)">Heck yeah!</button>
+
+      <form ng-show="user.name == 'Patricia Lebsack'" ng-click="newProposal()">
+        <button class="button button-assertive">No way!</button>
+      </form>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
