@@ -1,18 +1,23 @@
 
 app.controller('ActiveDecisionCtrl', ['$scope', 'Decision', '$ionicModal', function($scope, Decision, $ionicModal){
 
+
     // hard coded variables will be replaced with associated json data from api
-    $scope.decisionUsers = Decision.query();
-    $scope.decisionName = "Pizza Tonight!"
+    Decision.get().$promise.then(function(resp){
+      console.log(resp.context);
+      console.log(resp.participants);
+      $scope.decisionContext = resp.context
+      $scope.decisionUsers = resp.participants
+    });
+
+    // debugger;
+    // $scope.decisionUsers = $scope.decisionData.context.participants
+    // $scope.decisionName = $scope.decisionData.context
+
+    // to get this information, we need to make a separate request to the server for info about the current proposal for the specific decision being rendered
     $scope.currentProposal = "Dominoes"
-    $scope.decisionData = {};
-    // $scope.newDecision = function() {
-    //   var query = new Query($scope.queryData);
-    //   query.$save();
-    // }
-    // $scope.newProposal = function(){
-    //   alert("hi!")
-    // }
+
+
     $ionicModal.fromTemplateUrl('new_proposal.html', function(modal){
       $scope.proposalModal = modal;
     }, {
