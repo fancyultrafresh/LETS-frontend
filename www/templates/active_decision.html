@@ -7,9 +7,9 @@
 
       <span ng-show="user.name == 'Ervin Howell'" class="span icon-right ion-star"></span>
 
-       <button ng-show="user.name == 'Patricia Lebsack'" class="button button-balanced" ng-submit="newVote(true)">Heck yeah!</button>
+       <button ng-show="user.name == 'Patricia Lebsack'" class="button button-balanced" ng-click="newVote(true)">Heck yeah!</button>
 
-      <form ng-show="user.name == 'Patricia Lebsack'" ng-submit="newVote(false)">
+      <form ng-show="user.name == 'Patricia Lebsack'" ng-click="newProposal()">
         <button class="button button-assertive">No way!</button>
       </form>
       </ion-item>
