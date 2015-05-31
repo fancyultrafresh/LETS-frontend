@@ -18,29 +18,17 @@ app.controller('ActiveDecisionCtrl', ['$scope', 'Decision', '$ionicModal', funct
       animation: 'slide-in-up'
     });
 
+    $scope.createProposal = function(proposal){
+      $scope.decisionName.replace("Pizza", proposal.proposed_idea);
+      $scope.proposalModal.hide();
+      proposal.proposed_idea = "";
+    };
+
     $scope.newProposal = function(){
-      alert("hi!")
+      $scope.proposalModal.show();
     }
 
     $scope.cancelNewProposal = function(){
       $scope.proposalModal.hide();
     }
-}])
-// .controller('modalCtrl', ['$scope', function($scope,  $ionicModal){
-
-//   $ionicModal.fromTemplateUrl('new_proposal.html', function(modal){
-//       $scope.proposalModal = modal;
-//     }, {
-//       scope: $scope,
-//       animation: 'slide-in-up'
-//     });
-
-//     $scope.newProposal = function(){
-//       alert("hi!")
-//     }
-
-//     $scope.cancelNewProposal = function(){
-//       $scope.proposalModal.hide();
-//     }
-// }]);
-
+}]);
