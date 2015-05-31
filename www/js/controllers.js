@@ -19,8 +19,14 @@ app.controller('ActiveDecisionCtrl', ['$scope', 'Decision', '$ionicModal', funct
       animation: 'slide-in-up'
     });
 
+    $scope.createProposal = function(proposal){
+      $scope.decisionName.replace("Pizza", proposal.proposed_idea);
+      $scope.proposalModal.hide();
+      proposal.proposed_idea = "";
+    };
+
     $scope.newProposal = function(){
-      alert("hi!")
+      $scope.proposalModal.show();
     }
 
     $scope.cancelNewProposal = function(){
@@ -42,7 +48,7 @@ app.controller('ActiveDecisionCtrl', ['$scope', 'Decision', '$ionicModal', funct
       })
     })
   }
-})
+});
 // .controller('modalCtrl', ['$scope', function($scope,  $ionicModal){
 
 //   $ionicModal.fromTemplateUrl('new_proposal.html', function(modal){
