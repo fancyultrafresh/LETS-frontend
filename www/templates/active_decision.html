@@ -1,15 +1,20 @@
-<ion-view view-title="{{decisionName}}">
+<ion-view view-title="{{decisionContext}}">
   <ion-content ng-controller="ActiveDecisionCtrl">
     <ion-list show-delete="false" can-swipe="true">
       <ion-item ng-repeat="user in decisionUsers">
-      {{user.name}}
-      <ion-option-button ng-show="user.name == 'Patricia Lebsack'" on-swipe-left="onSwipeLeft()" class="button">Opt Out</ion-option-button>
+      <!-- this marks a star next to the user who's turn it is to vote, when it is not current user -->
 
       <span ng-show="user.name == 'Ervin Howell'" class="span icon-right ion-star"></span>
 
-       <button ng-show="user.name == 'Patricia Lebsack'" class="button button-balanced" ng-click="newVote(true)">Heck yeah!</button>
+      <!-- these are the functions for when it is the user's turn to vote, their name is hidden and options become available. -->
+      <span ng-hide="user.name == 'Candice'"> {{user.name}} {{user.id}}</span>
+      <span ng-show="user.name == 'Candice'">It's your turn to vote!</span>
+      <span ng-show="user.name == 'Candice'">{{currentProposal}}?</span>
+      <ion-option-button ng-show="user.name == 'Candice'" on-swipe-left="onSwipeLeft()" class="button">Opt Out</ion-option-button>
 
-      <form ng-show="user.name == 'Patricia Lebsack'" ng-click="newProposal()">
+       <button ng-show="user.name == 'Candice'" class="button button-balanced" ng-click="newVote(true)">Heck yeah!</button>
+
+      <form ng-show="user.name == 'Candice'" ng-click="newProposal()">
         <button class="button button-assertive">No way!</button>
       </form>
       </ion-item>
