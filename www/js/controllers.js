@@ -1,12 +1,10 @@
 
-app.controller('ActiveDecisionCtrl', ['$scope', 'Decision', '$ionicModal', function($scope, Decision, $ionicModal){
+app.controller('ActiveDecisionCtrl', ['$scope', 'Decision', 'Proposal', '$ionicModal', function($scope, Decision, Proposal, $ionicModal){
 
 
     // hard coded variables will be replaced with associated json data from api
-    Decision.get().$promise.then(function(resp){
-      console.log(resp.context);
-      console.log(resp.participants);
-      $scope.decisionContext = resp.context
+    Decision.get({id: 1, decision_id: 1}).$promise.then(function(resp){
+      $scope.decisionContext = "Let's " + resp.context
       $scope.decisionUsers = resp.participants
     });
 
@@ -15,7 +13,20 @@ app.controller('ActiveDecisionCtrl', ['$scope', 'Decision', '$ionicModal', funct
     // $scope.decisionName = $scope.decisionData.context
 
     // to get this information, we need to make a separate request to the server for info about the current proposal for the specific decision being rendered
-    $scope.currentProposal = "Dominoes"
+
+    Proposal.get({id: 1, proposal_id: 1}).$promise.then(function(resp){
+      console.log(resp)
+      // $scope.currentProposal = "";
+
+    })
+
+
+
+    //TODO make associated VOTE factory that can create a new vote
+    $scope.vote = function(value){
+
+    };
+
 
 
     $ionicModal.fromTemplateUrl('new_proposal.html', function(modal){
@@ -26,6 +37,7 @@ app.controller('ActiveDecisionCtrl', ['$scope', 'Decision', '$ionicModal', funct
     });
 
     $scope.createProposal = function(proposal){
+      Proposal.create({id: 1, decision_id: 1});
 
       $scope.decisionName = proposal.proposed_idea;
       $scope.proposalModal.hide();

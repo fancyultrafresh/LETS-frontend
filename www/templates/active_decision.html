@@ -12,7 +12,7 @@
       <span ng-show="user.name == 'Candice'">{{currentProposal}}?</span>
       <ion-option-button ng-show="user.name == 'Candice'" on-swipe-left="onSwipeLeft()" class="button">Opt Out</ion-option-button>
 
-       <button ng-show="user.name == 'Candice'" class="button button-balanced" ng-click="newVote(true)">Heck yeah!</button>
+       <button ng-show="user.name == 'Candice'" class="button button-balanced" ng-click="vote(true)">Heck yeah!</button>
 
       <form ng-show="user.name == 'Candice'" ng-click="newProposal()">
         <button class="button button-assertive">No way!</button>
