@@ -1,5 +1,21 @@
 app.factory('Decision', function($resource){
-  return $resource('https://letsmobile.herokuapp.com/api/users/1/decisions/1');
+  return $resource('https://letsmobile.herokuapp.com/api/users/:id/decisions/:decision_id', {id: '@id', decision_id: '@decision_id'});
+
+
+})
+.factory('Proposal', function($resource){
+  return $resource('https://letsmobile.herokuapp.com/api/decisions/:id/proposal/:proposal_id', { id: '@id',proposal_id: '@proposal_id'},
+    {
+      'create':  { method: 'POST' },
+      'index':   { method: 'GET', isArray: true },
+      'show':    { method: 'GET', isArray: false },
+      'update':  { method: 'PUT' },
+      'destroy': { method: 'DELETE' }
+    })
+
+})
+.factory('Vote', function($resource){
+  return $resource()
 })
 // .service('LoginService', function($q){
 //   return {
