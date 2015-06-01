@@ -82,7 +82,7 @@ app.controller('ActiveDecisionCtrl', ['$scope', 'Decision', 'Proposal', '$ionicM
       $rootScope.isLoggedIn = true;
 
 
-      $state.go('ActiveDecision');
+      $state.go('app.ActiveDecision');
 
     }, function(err){
 

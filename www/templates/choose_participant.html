@@ -1,0 +1,57 @@
+<script id="choose_participants.html" type="text/ng-template">
+<div class="modal">
+  <ion-header-bar class="bar-secondary">
+    <h1 class="title">Who will help decide?</h1>
+    <button class="button button-positive" ng-click="cancelNewParticipants()">Cancel</button>
+  </ion-header-bar>
+
+
+  <ion content>
+    <form ng-submit="chooseParticipants(participantData)">
+      <div>
+        <label class="item item-input">
+          <input type="text" placeholder="Email@yourfriend.com" ng-model="participantData.first">
+        </label>
+      </div>
+      <div>
+        <label class="item item-input">
+          <input type="text" placeholder="Email@yourfriend.com" ng-model="participantData.second">
+        </label>
+      </div>
+      <div>
+        <label class="item item-input">
+          <input type="text" placeholder="Email@yourfriend.com" ng-model="participantData.third">
+        </label>
+      </div>
+      <div>
+        <label class="item item-input">
+          <input type="text" placeholder="Email@yourfriend.com" ng-model="participantData.fourth">
+        </label>
+      </div>
+      <div>
+        <label class="item item-input">
+          <input type="text" placeholder="Email@yourfriend.com" ng-model="participantData.fifth">
+        </label>
+      </div>
+      <div>
+        <label class="item item-input">
+          <input type="text" placeholder="Email@yourfriend.com" ng-model="participantData.sixth">
+        </label>
+      </div>
+      <div>
+        <label class="item item-input">
+          <input type="text" placeholder="Email@yourfriend.com" ng-model="participantData.seventh">
+        </label>
+      </div>
+      <div>
+        <label class="item item-input">
+          <input type="text" placeholder="Email@yourfriend.com" ng-model="participantData.eigth">
+        </label>
+      </div>
+      <div>
+        <button type="submit" class="button button-block button-balanced">Submit</button>
+      </div>
+    </form>
+  </ion-content>
+</div>
+</script>

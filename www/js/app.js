@@ -36,6 +36,12 @@ var app = angular.module('letsApp',
       url: '/login',
       templateUrl: 'templates/login.html',
       controller: 'LoginCtrl'
+  })
+
+  .state('profile', {
+    url: '/profile',
+    templateUrl: 'templates/profile.html',
+    controller: 'Profile'
   });
   $urlRouterProvider.otherwise('/decision')
 })
