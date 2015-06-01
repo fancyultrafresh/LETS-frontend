@@ -27,15 +27,22 @@ var app = angular.module('letsApp',
     templateUrl: "index.html",
   })
 
-  .state('ActiveDecision', {
+  .state('app.ActiveDecision', {
     url: "/decision",
     templateUrl: "templates/active_decision.html",
     controller: "ActiveDecisionCtrl"
   })
-  .state('login', {
+
+  .state('app.login', {
       url: '/login',
       templateUrl: 'templates/login.html',
       controller: 'LoginCtrl'
+  })
+
+  .state('app.profile', {
+    url: '/profile',
+    templateUrl: 'tamplates/profile.html',
+    controller: 'Profile'
   });
   $urlRouterProvider.otherwise('/decision')
 })

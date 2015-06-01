@@ -70,7 +70,7 @@ app.controller('ActiveDecisionCtrl', ['$scope', 'Decision', '$ionicModal', funct
       $rootScope.isLoggedIn = true;
 
 
-      $state.go('ActiveDecision');
+      $state.go('app.ActiveDecision');
 
     }, function(err){
 
